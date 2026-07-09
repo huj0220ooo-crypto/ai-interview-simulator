@@ -1,9 +1,18 @@
+import { getAIFeedback } from "../services/geminiService";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { interviewQuestions } from "../constants/questions";
 
 function InterviewPage() {
+  const testAI = async () => {
+    console.log("Testing AI connection...");
+    const result = await getAIFeedback(
+      "Tell me about yourself",
+      "I am a software engineer with 3 years of experience.",
+    );
+    console.log("AI Response:", result);
+  };
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -44,6 +53,14 @@ function InterviewPage() {
             }}
           />
         </div>
+
+        {/* TEST BUTTON — add it here */}
+        <button
+          onClick={testAI}
+          className="text-sm text-gray-400 underline mb-4"
+        >
+          Test AI Connection
+        </button>
 
         {/* Question */}
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
