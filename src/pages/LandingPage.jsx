@@ -1,6 +1,8 @@
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-6 text-center">
       <h1 className="text-5xl font-bold text-blue-600 mb-4">
@@ -10,9 +12,7 @@ function LandingPage() {
         Practice real interview questions, get instant AI-powered feedback, and
         build the confidence you need to land your next job.
       </p>
-      <Button onClick={() => alert("Interview flow coming soon!")}>
-        Start Interview
-      </Button>
+      <Button onClick={() => navigate("/interview")}>Start Interview</Button>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 max-w-4xl">
         <div className="bg-white p-6 rounded-lg shadow-sm">
